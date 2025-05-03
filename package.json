@@ -3,6 +3,7 @@
   "private": true,
   "version": "5.0.0",
   "type": "module",
+  "homepage": "https://noonecoder.github.io/Blog/dist",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
