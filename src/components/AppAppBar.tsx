@@ -81,7 +81,7 @@ export default function AppAppBar() {
                 size="small"
                 sx={{ minWidth: 0 }}
               >
-                Blog
+                My Tech Blogs
               </Button>
             </Box>
           </Box>
