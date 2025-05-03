@@ -3,7 +3,6 @@
   "private": true,
   "version": "5.0.0",
   "type": "module",
-  "homepage": "https://noonecoder.github.io/Blog/dist",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -23,7 +22,6 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "gh-pages": "^6.3.0",
     "typescript": "latest",
     "vite": "latest"
   }
