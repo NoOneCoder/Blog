@@ -190,7 +190,7 @@ export default function MainContent() {
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <div>
         <Typography variant="h1" gutterBottom>
-          Blog
+          Alfa's Blogs
         </Typography>
         <Typography>
           Stay in the loop with the latest about our products
