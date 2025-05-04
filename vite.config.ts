@@ -4,5 +4,8 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/Blog/", // Important for github pages routing
+  base: "/", // repository name for github pages routing. for goDaddy only slash
+  build: {
+    outDir: "dist",
+  },
 });
