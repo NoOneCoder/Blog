@@ -1,49 +1,49 @@
-import * as React from "react";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import ProTip from "./ProTip";
-import AppTheme from "./theme/AppTheme";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppAppBar from "./components/AppAppBar";
-import MainContent from "./components/MainContent";
-import Latest from "./components/Latest";
-import Footer from "./components/Footer";
-import type {} from "@mui/material/themeCssVarsAugmentation";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ServicesPage } from "./pages/ServicesPage";
+import BlogDetailPage, { blogDetailLoader } from "./pages/BlogDetailPage";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./Theme";
+import { CssBaseline } from "@mui/material";
+import BlogPage, { blogLoader } from "./pages/BlogPages";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import { useEffect } from "react";
+import emailJs from "@emailjs/browser";
 
-function Copyright() {
-  return (
-    <Typography
-      variant="body2"
-      align="center"
-      sx={{
-        color: "text.secondary",
-      }}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/blog",
+        element: <BlogPage />,
+        loader: blogLoader,
+      },
+      {
+        path: "/services",
+        element: <ServicesPage />,
+      },
+      {
+        path: "/blog/:slug",
+        element: <BlogDetailPage />,
+        loader: blogDetailLoader,
+      },
+    ],
+  },
+]);
 
 export default function App(props: { disableCustomTheme?: boolean }) {
+  useEffect(() => {
+    emailJs.init("fBmiXavakQ6zlsaQC");
+  }, []);
   return (
-    <AppTheme {...props}>
-      <CssBaseline enableColorScheme />
-      <AppAppBar />
-      <Container
-        maxWidth="lg"
-        component="main"
-        sx={{ display: "flex", flexDirection: "column", my: 16, gap: 4 }}
-      >
-        <MainContent />
-        <Latest />
-      </Container>
-      <Footer />
-    </AppTheme>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
